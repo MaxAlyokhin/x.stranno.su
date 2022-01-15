@@ -1,0 +1,139 @@
+@import "fonts"
+@import "vars"
+@import "normalize"
+@import "mixins"
+
+*
+  transition: all $transition
+  box-sizing: border-box
+
+::-webkit-scrollbar
+  width: 0px
+
+::-webkit-scrollbar-thumb
+  border-radius: 300px
+  background: $white
+
+::-webkit-scrollbar-track
+  background: rgba(0, 0, 0, 0)
+
+body
+  font-family: $default-font
+  font-size: 1em
+  background: $black
+  color: $white
+  width: 100%
+  height: 100%
+  -webkit-font-smoothing: antialiased
+  text-size-adjust: 100%
+  text-rendering: optimizelegibility
+
+  opacity: 0
+
+h2
+  font-family: $title-font
+
+a
+  text-decoration: underline
+  color: $white
+  font-weight: bold
+
+p
+  margin: 0
+  margin-bottom: 20px
+  span
+    text-decoration-line: underline
+    text-decoration-style: dotted
+
+.container
+  line-height: 1.25
+  letter-spacing: -0.025rem
+.text
+  padding: calc(20px + 3vw)
+  max-width: 60%
+  @media ($mobile)
+    max-width: 100%
+    font-size: calc(0.725rem + 1vw)
+
+.popup
+  display: none
+  opacity: 0
+  position: absolute
+  top: 5%
+  transition: top 0s, right 0s, opacity $transition
+  background-color: $grey
+  margin: calc(20px + 3vw)
+  padding: 40px
+  box-shadow: 2px 2px 70px rgba(0, 0, 0, 0.4)
+  border-radius: 33px
+  max-width: 400px
+  font-size: .8em
+  @media ($mobile)
+    position: fixed
+    top: 0
+    left: unset
+    border-radius: 15px
+    padding: 15px
+    font-size: .7em
+  &__wrapper
+
+.swiper
+  // width: 600px
+
+  margin-bottom: 80px
+  @media ($mobile)
+    height: 350px
+  .img-container
+    // width: fit-content
+    width: 100%
+    margin: 0 auto
+    display: block
+    text-align: center
+  img, iframe
+    max-width: 100%
+    height: 100vh
+    object-fit: contain
+    @media ($mobile)
+      height: 300px
+  iframe
+    max-width: calc(100% - 200px)
+    @media ($mobile)
+      max-width: 100%
+  .swiper-pagination
+    display: none
+    @media ($mobile)
+      display: block
+  .swiper-button-next,
+  .swiper-button-prev
+    opacity: 0
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover
+    opacity: 1
+
+.ru, .en
+  opacity: 0
+
+.lang-popup
+  position: fixed
+  width: calc(100% - 50px)
+  display: flex
+  top: -100px
+  justify-content: center
+  align-items: center
+  z-index: 10
+  margin: 0 25px
+  transform: translateY(-115px)
+  @media screen and ( $phone )
+    font-size: calc(0.625rem + 1vw)
+
+  div
+    padding: 25px
+    @media screen and ( $phone )
+      padding: 10px
+  &__wrapper
+    text-align: center
+    background-color: $grey
+    border-radius: 15px
+    box-shadow: 2px 2px 100px 3px #223c5036
+  &__switch
+    cursor: pointer
