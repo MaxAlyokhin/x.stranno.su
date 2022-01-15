@@ -147,16 +147,16 @@ function js() {
       .pipe(
         webpackStream({
           module: {
-            rules: [
-              {
-                // use: {
-                //   loader: 'babel-loader',
-                //   options: {
-                //     presets: ['@babel/preset-env'],
-                //   },
-                // },
-              },
-            ],
+            // rules: [
+            //   {
+            //     use: {
+            //       loader: 'babel-loader',
+            //       options: {
+            //         presets: ['@babel/preset-env'],
+            //       },
+            //     },
+            //   },
+            // ],
           },
           entry: {
             main: './src/js/main.js',
@@ -183,7 +183,9 @@ function image() {
         return file.stat.size > 1000000
       })
     )
-    .pipe(imagemin([mozjpeg({ quality: 50, progressive: true }), optipng({ optimizationLevel: 5 })]))
+    .pipe(
+      imagemin([mozjpeg({ quality: 50, progressive: true }), optipng({ optimizationLevel: 5 })])
+    )
     .pipe(dest(path.dist.img)) // Вывод готового в dist
     .pipe(reload({ stream: true })) // Обновляем сервер
 }

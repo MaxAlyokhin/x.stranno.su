@@ -6,6 +6,8 @@ window.addEventListener('DOMContentLoaded', () => {
   document.querySelector('body').style.opacity = 1
 
   popupsInit()
+
   swiperInit()
+
   language()
 })

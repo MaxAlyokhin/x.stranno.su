@@ -1,13 +1,14 @@
 // Модуль определяет язык из URL (?ru / ?en)
 // Если в URL ничего не нашли, то определяем из navigator.language
-
+import swiperInit from './swiper'
 export default function language() {
   let isRussian = undefined
 
   const langMarkerFromURL = document.location.search.slice(1)
 
-  if (localStorage.language) {
-    isRussian = localStorage.language
+  // В localStorage хранится строка, а не булево значение
+  if (localStorage.language !== undefined) {
+    isRussian = localStorage.language === 'true' ? true : false
   } else if (langMarkerFromURL === 'ru') {
     isRussian = true
     localStorage.language = isRussian
@@ -43,27 +44,27 @@ export default function language() {
   function langInit(langMarker) {
     if (langMarker) {
       enElement.style.opacity = 0
-
       setTimeout(() => {
         enElement.style.display = 'none'
         window.scrollTo(0, 0)
       }, 500)
-
       ruElement.style.display = 'block'
+
       setTimeout(() => {
         ruElement.style.opacity = 1
+        swiperInit()
       }, 0)
     } else {
       ruElement.style.opacity = 0
-
       setTimeout(() => {
         ruElement.style.display = 'none'
         window.scrollTo(0, 0)
       }, 500)
-
       enElement.style.display = 'block'
+
       setTimeout(() => {
         enElement.style.opacity = 1
+        swiperInit()
       }, 0)
     }
   }
