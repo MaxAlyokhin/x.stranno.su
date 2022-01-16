@@ -221,7 +221,7 @@ const _default = series(style, js, image, fonts, libs, html, function () {
   watch(path.watch.html, series(html))
   watch(path.watch.sass, series(style, html))
   watch(path.watch.js, series(js, html))
-  watch(path.watch.img, image)
+  // watch(path.watch.img, image)
   watch(path.watch.fonts, fonts)
   watch(path.watch.libs, series(libs, html))
 })
