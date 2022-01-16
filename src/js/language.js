@@ -113,4 +113,10 @@ export default function language() {
       }
     })
   }, 7000)
+
+  // При уходе со страницы прячем попап
+  document.addEventListener('mouseout', (event) => {
+    enPopupElement.style.transform = 'translateY(-115px)'
+    ruPopupElement.style.transform = 'translateY(-115px)'
+  })
 }
